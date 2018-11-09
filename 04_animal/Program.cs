@@ -14,16 +14,16 @@ using System;
 
 namespace _04_animal
 {
-    class Human// : EventArgs
+    class Human
     {
-        int food;
+        uint food;
 
-        public Human(int food)
+        public Human(uint food)
         {
             this.food = food;
         }
 
-        public int Food
+        public uint Food
         {
             get { return food; }
         }
@@ -46,7 +46,6 @@ namespace _04_animal
             if (Energy < 10)
             {
                 OnLowEnergy(new Human(20));
-                Energy += 20;
             }
         }
 
@@ -54,6 +53,7 @@ namespace _04_animal
         {
             if (Feed != null)
                 Feed(this, eargs);
+            Energy += eargs.Food;
         }
     }
 
@@ -75,8 +75,8 @@ namespace _04_animal
         }
 
         static void OnCatchLowEnergy(object sender, Human eargs)
-        {
-            Console.WriteLine("\tAnimal eat " + eargs.Food);
+        { 
+            Console.WriteLine("\n\tAnimal eat " + eargs.Food + "\n");
         }
     }
 }
